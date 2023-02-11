@@ -7,13 +7,6 @@ public class Main {
     static double moneyAmountDouble;
 
     public static void main(String[] args) {
-        // write your code here
-
-        // This is one of the best Java project ideas to start with, because it’s pretty simple.
-        // A currency converter just needs three inputs: the amount, the original currency, and the
-        // currency you’re trying to convert to. From there, everything is in the back-end.
-        // (You’ll have to write the conversion rates on your own.)
-
 
 
     /* things i wanna do:
@@ -25,7 +18,6 @@ public class Main {
         and maybe another line in the print to say thats gonna happen
 
         investigate ways in which this can be done more efficiently - ie lots! but specifically
-        - use regex eg "^(gbp)$|^(usd)$|^(euro)$"gi instead of lots of or statements to shorten the equalscase thing for the strings
         - if i am to bring in more currencies and even import from the web are classes/objects the best
             way to go about this program?
         - regarding my method, should this be in the class file or where it is. fix the weird variables
@@ -33,12 +25,12 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        Currency GBP = new Currency(1.1);
-        Currency USD = new Currency(1.2);
-        Currency EURO = new Currency(2.1);
+        Currency gBP = new Currency(1.1);
+        Currency uSD = new Currency(1.2);
+        Currency eURO = new Currency(2.1);
 
 
-        System.out.printf("gbp is %f, USD is %f, EURO is %f \n\n", GBP.getValue(), USD.getValue(), EURO.getValue());
+        System.out.printf("gbp is %f, USD is %f, EURO is %f \n\n", gBP.getValue(), uSD.getValue(), eURO.getValue());
 
 
         boolean validAmountDouble = false;
@@ -122,44 +114,43 @@ public class Main {
 
         } while(!validCurrencyToType);
 
+        double convertFromDouble = 0;
+        double convertToDouble = 0;
+
         if (convertFrom.equalsIgnoreCase("gbp")) {
 
-            convertFromDouble = GBP.getValue();
+            convertFromDouble = gBP.getValue();
 
         }
 
         else if(convertFrom.equalsIgnoreCase("usd")) {
-            convertFromDouble = USD.getValue();
+            convertFromDouble = uSD.getValue();
 
         }
 
        else if(convertFrom.equalsIgnoreCase("EURO")) {
-            convertFromDouble = EURO.getValue();
+            convertFromDouble = eURO.getValue();
 
         }
 
 
         if (convertTo.equalsIgnoreCase("gbp")) {
 
-            convertToDouble = GBP.getValue();
+            convertToDouble = gBP.getValue();
 
         }
 
         else if(convertTo.equalsIgnoreCase("usd")) {
-            convertToDouble = USD.getValue();
+            convertToDouble = uSD.getValue();
 
         }
 
         else if(convertTo.equalsIgnoreCase("EURO")) {
-            convertToDouble = EURO.getValue();
+            convertToDouble = eURO.getValue();
 
         }
 
-        convert();
-
-//ti do the conversion eg 100gbp into usd, (when gbp 1.1 usd 1.2) do 100/1.1, and then that value *1.2)
-
-
+        Currency.convert(moneyAmountDouble, convertFromDouble, convertToDouble);
 
 
 
@@ -180,13 +171,8 @@ public class Main {
 
     scanner.close();
     }
-    static double convertFromDouble;
-    static double convertToDouble;
 
 
-    public static void convert() {
 
-        double finalValue = (moneyAmountDouble / convertFromDouble) * convertToDouble;
-        System.out.printf("final value is %f", finalValue);
-    }
+
 }
